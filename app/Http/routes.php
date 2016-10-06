@@ -23,6 +23,7 @@ Route::group(['prefix'=>'/admin','middleware' =>'admin'],function(){
 	Route::resource('/user', 'UserController');
 	Route::resource('/artikel', 'ArtikelController');
 	Route::resource('/seminar', 'SeminarController');
+	Route::resource('/psikolog', 'PsikologController');
 });
 
 //route employer

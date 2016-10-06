@@ -53,6 +53,7 @@
                         <li><a>Home</a></li>
                         <li><a href="{{url('/admin/user')}}">User</a></li>
                         <li><a href="{{url('/admin/artikel')}}">Artikel</a></li>
+                        <li><a href="{{url('/admin/seminar')}}">Seminar</a></li>
                         </ul>
                     </div>
 

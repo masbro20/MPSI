@@ -13,7 +13,9 @@
     			<th>Tanggal Seminar</th>
     		</thead>
     		<tbody>
-
+            @foreach ($sem as $sems)
+            
+            @endforeach
     		</tbody>
     	</table>
     </li>

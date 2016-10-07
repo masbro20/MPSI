@@ -22,7 +22,7 @@ class SeminarController extends Controller {
 
 	/**
 	 * Show the form for creating a new resource.
-	 *
+	 *return view('admin.seminar.create');	}
 	 * @return Response
 	 */
 	public function create()
@@ -35,6 +35,13 @@ class SeminarController extends Controller {
 	 *
 	 * @return Response
 	 */
+<<<<<<< HEAD
+	public function store(Request $request)
+	{
+		$sem = new Seminar();
+		$sem->judul = $request->judul;
+		$sem->tgl = $request->tgl;
+=======
 	public function store(Request $req)
 	{
 		$sem = new Seminar();
@@ -50,6 +57,7 @@ class SeminarController extends Controller {
 		$sem->note = $req->note;
 		$sem->tipe = $req->tipe;
 		$sem->penyelenggara = $req->penyelenggara;
+>>>>>>> origin/master
 		$sem->save();
 		return redirect('/admin/seminar');
 	}
@@ -83,6 +91,13 @@ class SeminarController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
+<<<<<<< HEAD
+	public function update($id,Request $request)
+	{
+		$sem = Seminar::find($id);
+		$sem->judul = $request->judul;
+		$sem->tgl = $request->tgl;
+=======
 	public function update($id, Request $request)
 	{
 		$sem = Seminar::findOrFail($id);
@@ -98,6 +113,7 @@ class SeminarController extends Controller {
 		$sem->note = $request->note;
 		$sem->tipe = $request->tipe;
 		$sem->penyelenggara = $request->penyelenggara;
+>>>>>>> origin/master
 		$sem->save();
 		return redirect('/admin/seminar');
 	}

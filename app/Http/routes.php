@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::get('/admin', 'HomeController@index');
+Route::get('/employer', 'HomeController@index');
+Route::get('/jobseeker', 'HomeController@index');
 
 //route umum
 Route::get('home', 'HomeController@index');

@@ -26,7 +26,7 @@ class SeminarController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('admin.seminar.create');
 	}
 
 	/**

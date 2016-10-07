@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 <script type="text/javascript" src="{{ asset('asset/tinymce/tinymce.min.js') }}"></script>
-
 <script type="text/javascript">
 var jq = jQuery.noConflict(true);
 
@@ -43,9 +42,9 @@ function saveForm() {
 		{!! Form::label("tgl", "Tanggal Seminar") !!}
     {!! Form::text("tgl", null, ["class" => "datepicker", "placeholder" => "DD/MM/YYYY"]) !!}
     {!! Form::label("start_time", "Start Time") !!}
-    {!! Form::text("start_time", null, ["class" => "form-control", "placeholder" => "08:00 AM"]) !!}
+    {!! Form::text("start_time", null, ["class" => "timepicker", "placeholder" => "08:00 AM"]) !!}
     {!! Form::label("end_time", "End Time") !!}
-    {!! Form::text("end_time", null, ["class" => "form-control", "placeholder" => "08:00 AM"]) !!}
+    {!! Form::text("end_time", null, ["class" => "timepicker", "placeholder" => "08:00 AM"]) !!}
     {!! Form::label("tempat", "Tempat") !!}
     {!! Form::text("tempat", null, ["class" => "form-control", "placeholder" => "Tempat"]) !!}
     {!! Form::label("deskripsi", "Deskripsi Seminar") !!}

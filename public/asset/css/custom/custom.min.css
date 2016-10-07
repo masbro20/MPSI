@@ -46,3 +46,9 @@ footer {
 #profiles-dd li.divider {
   padding: 0;
 }
+.navbar-color{
+  background-color: #1b5e20;
+}
+.page-footer{
+  background-color: #1b5e20 !important;
+}

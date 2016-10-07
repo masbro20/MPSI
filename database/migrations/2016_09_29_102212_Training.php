@@ -20,9 +20,10 @@ class Training extends Migration {
             $table->time('end_time');
             $table->string('tempat');
             $table->text('deskripsi')->nullable();
-            $table->integer('kuota');
-            $table->integer('biaya');
+            $table->integer('kuota')->nullable();
+            $table->integer('biaya')->nullable();
             $table->text('note')->nullable();
+            $table->text('penyelenggara')->nullable();
             $table->integer('users_id')->unsigned();
             $table->integer('tipe');
             $table->timestamps();

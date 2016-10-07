@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Seminar;
+use Auth;
 
 class SeminarController extends Controller {
 
@@ -34,11 +35,29 @@ class SeminarController extends Controller {
 	 *
 	 * @return Response
 	 */
+<<<<<<< HEAD
 	public function store(Request $request)
 	{
 		$sem = new Seminar();
 		$sem->judul = $request->judul;
 		$sem->tgl = $request->tgl;
+=======
+	public function store(Request $req)
+	{
+		$sem = new Seminar();
+		$sem->judul = $req->judul;
+		$sem->tgl = $req->tgl;
+		$sem->start_time = $req->start_time;
+		$sem->end_time = $req->end_time;
+		$sem->tempat = $req->tempat;
+		$sem->deskripsi = $req->deskripsi;
+		$sem->kuota = $req->kuota;
+		$sem->biaya = $req->biaya;
+		$sem->users_id = Auth::user()->id;
+		$sem->note = $req->note;
+		$sem->tipe = $req->tipe;
+		$sem->penyelenggara = $req->penyelenggara;
+>>>>>>> origin/master
 		$sem->save();
 		return redirect('/admin/seminar');
 	}
@@ -62,7 +81,8 @@ class SeminarController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$sem = Seminar::find($id);
+		return view('admin.seminar.edit',compact('sem'));
 	}
 
 	/**
@@ -71,11 +91,29 @@ class SeminarController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
+<<<<<<< HEAD
 	public function update($id,Request $request)
 	{
 		$sem = Seminar::find($id);
 		$sem->judul = $request->judul;
 		$sem->tgl = $request->tgl;
+=======
+	public function update($id, Request $request)
+	{
+		$sem = Seminar::findOrFail($id);
+		$sem->judul = $request->judul;
+		$sem->tgl = $request->tgl;
+		$sem->start_time = $request->start_time;
+		$sem->end_time = $request->end_time;
+		$sem->tempat = $request->tempat;
+		$sem->deskripsi = $request->deskripsi;
+		$sem->kuota = $request->kuota;
+		$sem->biaya = $request->biaya;
+		$sem->users_id = Auth::user()->id;
+		$sem->note = $request->note;
+		$sem->tipe = $request->tipe;
+		$sem->penyelenggara = $request->penyelenggara;
+>>>>>>> origin/master
 		$sem->save();
 		return redirect('/admin/seminar');
 	}

@@ -23,7 +23,13 @@
                     <td>{{$arts->judul}}</td>
                     <td>{{$arts->created_at}}</td>
                     <td>{{$arts->updated_at}}</td>
-                    <td><a href="{{url('admin/artikel/'.$arts->id)}}" class="btn">Lihat</a> <a href="{{url('admin/artikel/'.$arts->id.'/edit')}}" class="btn">Edit</a> <a href="" class="btn">Hapus</a></td>
+                    <td>
+                    {!! Form::open(array('url' => 'admin/artikel/' . $arts->id,'class' => 'pull-right')) !!}
+                    <a href="{{url('admin/artikel/'.$arts->id)}}" class="btn">Lihat</a> <a href="{{url('admin/artikel/'.$arts->id.'/edit')}}" class="btn">Edit</a>
+                        {!! Form::submit('Hapus', array('class' => 'btn')) !!}
+                        {!! Form::hidden('_method', 'DELETE') !!}
+                    {!! Form::close() !!}
+                    </td>
                 </tr>
             @endforeach
     		</tbody>

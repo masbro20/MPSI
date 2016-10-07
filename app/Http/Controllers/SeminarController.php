@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Seminar;
+use App\UserTrainingOrder;
 use Auth;
 
 class SeminarController extends Controller {
@@ -35,13 +36,6 @@ class SeminarController extends Controller {
 	 *
 	 * @return Response
 	 */
-<<<<<<< HEAD
-	public function store(Request $request)
-	{
-		$sem = new Seminar();
-		$sem->judul = $request->judul;
-		$sem->tgl = $request->tgl;
-=======
 	public function store(Request $req)
 	{
 		$sem = new Seminar();
@@ -57,7 +51,6 @@ class SeminarController extends Controller {
 		$sem->note = $req->note;
 		$sem->tipe = $req->tipe;
 		$sem->penyelenggara = $req->penyelenggara;
->>>>>>> origin/master
 		$sem->save();
 		return redirect('/admin/seminar');
 	}
@@ -70,7 +63,10 @@ class SeminarController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$sem = Seminar::find($id);
+		$pendaftar = UserTrainingOrder::where('training_id',$id)->where('status',2)->get();
+		$pendaftar = count($pendaftar);
+		return view('admin.seminar.show',compact('sem','pendaftar'));
 	}
 
 	/**
@@ -91,13 +87,7 @@ class SeminarController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-<<<<<<< HEAD
-	public function update($id,Request $request)
-	{
-		$sem = Seminar::find($id);
-		$sem->judul = $request->judul;
-		$sem->tgl = $request->tgl;
-=======
+
 	public function update($id, Request $request)
 	{
 		$sem = Seminar::findOrFail($id);
@@ -113,7 +103,6 @@ class SeminarController extends Controller {
 		$sem->note = $request->note;
 		$sem->tipe = $request->tipe;
 		$sem->penyelenggara = $request->penyelenggara;
->>>>>>> origin/master
 		$sem->save();
 		return redirect('/admin/seminar');
 	}

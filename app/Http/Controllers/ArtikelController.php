@@ -102,7 +102,9 @@ class ArtikelController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$art = Artikel::find($id);
+		$art->delete();
+		return redirect('/admin/artikel');
 	}
 
 }

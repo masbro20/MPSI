@@ -24,7 +24,7 @@
                     <td>{{$sems->penyelenggara}}</td>
                     <td>{{$sems->tgl}}</td>
                     <td>{{$sems->kuota}}</td>
-                    <td><a href="{{url('/admin/seminar/'.$sems->id.'/edit')}}" class="btn">Edit</a></td>
+                    <td><a href="{{url('/admin/seminar/'.$sems->id.'/edit')}}" class="btn">Edit</a> <a href="{{url('/admin/seminar/'.$sems->id)}}" class="btn">Show</a></td>
                 </tr>
             @endforeach
     		</tbody>

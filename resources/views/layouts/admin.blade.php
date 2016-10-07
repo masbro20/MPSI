@@ -26,6 +26,7 @@
   <link href="{{asset('asset/js/plugins/prism/prism.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="{{asset('asset/js/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="{{asset('asset/js/plugins/chartist-js/chartist.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="{{asset('asset/time/materialize.clockpicker.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
 </head>
 <script type="text/javascript" src="{{asset('asset/js/jquery-3.1.1.min.js') }}"></script>
 <body>
@@ -233,6 +234,8 @@
     <script type="text/javascript" src="{{asset('asset/js/plugins.min.js') }}"></script>
     <!--custom-script.js - Add your own theme custom JS-->
     <script type="text/javascript" src="{{asset('asset/js/custom-script.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('asset/time/materialize.clockpicker.js') }}"></script>
     
 </body>
 

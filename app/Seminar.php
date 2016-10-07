@@ -6,5 +6,4 @@ class Seminar extends Model {
 
     protected $table='training';
     public $timestamps=true;
-
 }

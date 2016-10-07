@@ -1,12 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+
 <script type="text/javascript" src="{{ asset('asset/tinymce/tinymce.min.js') }}"></script>
 
 <script type="text/javascript">
 var jq = jQuery.noConflict(true);
 
 jq(document).ready(function(){
-  tinymce.init({ selector: "textarea",theme: "modern",height:"200",entity_encoding : "raw",
+  tinymce.init({ selector: "textarea",theme: "modern",height:"700",
       plugins: [
            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
            "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
@@ -18,18 +19,18 @@ jq(document).ready(function(){
      
      external_filemanager_path:"{!! str_finish(asset('asset/filemanager'),'/') !!}",
      filemanager_title:"Carrier Filemanager" ,
-     external_plugins: { "filemanager" : "{{asset('asset/filemanager/plugin.min.js') }}"} 
+     external_plugins: { "filemanager" : "{{asset('asset/filemanager/plugin.min.js') }}"},
+     entity_encoding : "raw" 
   });
 });
 
 function saveForm() {
-  tinymce.triggerSave();
-  jq('.seminar_form').submit();
+	tinymce.triggerSave();
+	jq('.seminar_form').submit();
 }
 </script>
-
 <style type="text/css">
-	.seminar_form{
+	.artikel_form{
 		margin:20px;
 	}
 </style>
@@ -37,10 +38,10 @@ function saveForm() {
 	<li class="collection-header cyan">
 		<h4 class="task-card-title">Tambah Seminar</h4>
     </li>
-    {!! Form::open(['url' => '/admin/seminar',  'class' => 'seminar_form']) !!}
+{!! Form::model($art, ['method' => 'PATCH','action' => ['SeminarController@update', $smnr->id],'class' => 'seminar_form']) !!}
 		{!! Form::label("judul", "Judul") !!}
-		{!! Form::text("judul", null, ["class" => "form-control", "placeholder" => "Judul"]) !!}
-		{!! Form::label("tgl", "Tanggal Seminar") !!}
+    {!! Form::text("judul", null, ["class" => "form-control", "placeholder" => "Judul"]) !!}
+    {!! Form::label("tgl", "Tanggal Seminar") !!}
     {!! Form::text("tgl", null, ["class" => "datepicker", "placeholder" => "DD/MM/YYYY"]) !!}
     {!! Form::label("start_time", "Start Time") !!}
     {!! Form::text("start_time", null, ["class" => "form-control", "placeholder" => "08:00 AM"]) !!}

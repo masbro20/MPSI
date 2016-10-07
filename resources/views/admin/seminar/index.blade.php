@@ -14,7 +14,14 @@
     		</thead>
     		<tbody>
             @foreach ($sem as $sems)
-            
+              <tr>
+                    <td>{{$no++}}</td>
+                    <td>{{$sems->judul}}</td>
+                    <td>{{$sems->tgl}}</td>
+                    <td>{{$sems->created_at}}</td>
+                    <td>{{$sems->updated_at}}</td>
+                    <td><a href="{{url('admin/seminar/'.$sems->id)}}" class="btn">Lihat</a> <a href="{{url('admin/seminar/'.$sems->id.'/edit')}}" class="btn">Edit</a> <a href="" class="btn">Hapus</a></td>
+                </tr>
             @endforeach
     		</tbody>
     	</table>

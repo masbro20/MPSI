@@ -9,12 +9,23 @@
     <li>
     	<table style="margin: 10px;">
     		<thead>
+                <th>NO</th>
     			<th>Judul</th>
+                <th>Penyelenggara</th>
     			<th>Tanggal Seminar</th>
+                <th>Kuota</th>
+                <th>Aksi</th>
     		</thead>
     		<tbody>
             @foreach ($sem as $sems)
-            
+                <tr>
+                    <td>{{$no++}}</td>
+                    <td>{{$sems->judul}}</td>
+                    <td>{{$sems->penyelenggara}}</td>
+                    <td>{{$sems->tgl}}</td>
+                    <td>{{$sems->kuota}}</td>
+                    <td><a href="{{url('/admin/seminar/'.$sems->id.'/edit')}}" class="btn">Edit</a></td>
+                </tr>
             @endforeach
     		</tbody>
     	</table>

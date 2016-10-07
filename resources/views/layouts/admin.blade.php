@@ -231,7 +231,7 @@
     <script type="text/javascript" src="{{asset('asset/js/plugins/chartist-js/chartist.min.js') }}"></script>   
     
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="{{asset('asset/js/plugins.min.js') }}"></script>
+    <script type="text/javascript" src="{{asset('asset/js/plugins.js') }}"></script>
     <!--custom-script.js - Add your own theme custom JS-->
     <script type="text/javascript" src="{{asset('asset/js/custom-script.js') }}"></script>
 

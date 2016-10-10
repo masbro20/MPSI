@@ -4,7 +4,7 @@
 $tipe=["1"=>"Seminar","2"=>"Training"];
 ?>
 <ul id="task-card" class="collection with-header">
-	<li class="collection-header cyan">
+	<li class="collection-header">
 		<h4 class="task-card-title">Lihat Seminar</h4>
     </li>
 	<li class="licent">

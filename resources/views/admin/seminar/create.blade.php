@@ -32,7 +32,7 @@ function saveForm() {
 </script>
 
 <ul id="task-card" class="collection with-header">
-	<li class="collection-header cyan">
+	<li class="collection-header">
 		<h4 class="task-card-title">Tambah Seminar</h4>
     </li>
     {!! Form::open(['url' => '/admin/seminar',  'class' => 'seminar_form']) !!}

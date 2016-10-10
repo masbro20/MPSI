@@ -2,7 +2,7 @@
 @section('content')
 <?php $no =1;?>
 <ul id="task-card" class="collection with-header">
-	<li class="collection-header cyan">
+	<li class="collection-header">
 		<h4 class="task-card-title">Seminar</h4>
     </li>
     <a href="{{url('admin/seminar/create')}}" class="task-add modal-trigger btn-floating waves-effect waves-light"><i class="mdi-content-add"></i></a>

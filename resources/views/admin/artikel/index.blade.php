@@ -2,7 +2,7 @@
 @section('content')
 <?php $no =1;?>
 <ul id="task-card" class="collection with-header">
-	<li class="collection-header cyan">
+	<li class="collection-header">
 		<h4 class="task-card-title">Artikel</h4>
     	<p class="task-card-date">Manage Artikel</p>
     </li>

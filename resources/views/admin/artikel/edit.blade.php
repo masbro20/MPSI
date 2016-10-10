@@ -36,7 +36,7 @@ function saveForm() {
 	}
 </style>
 <ul id="task-card" class="collection with-header">
-	<li class="collection-header cyan">
+	<li class="collection-header">
 		<h4 class="task-card-title">Tambah Artikel</h4>
     </li>
 {!! Form::model($art, ['method' => 'PATCH','action' => ['ArtikelController@update', $art->id],'class' => 'artikel_form']) !!}

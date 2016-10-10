@@ -16,9 +16,7 @@ class PsikologPiket extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('hari')->nullable();
-			$table->time('jam_start')->nullable();
-			$table->time('jam_end')->nullable();
-			$table->integer('kuota')->nullable();
+			$table->integer('shift')->nullable();
 			$table->integer('psikolog_id')->unsigned();
 			$table->timestamps();
 

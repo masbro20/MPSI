@@ -27,6 +27,7 @@ Route::group(['prefix'=>'/admin','middleware' =>'admin'],function(){
 	Route::resource('/artikel', 'ArtikelController');
 	Route::resource('/seminar', 'SeminarController');
 	Route::resource('/psikolog', 'PsikologController');
+	Route::post('/cekpiket', 'PsikologController@cekPiket');
 });
 
 //route employer

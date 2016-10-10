@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Psikolog;
+use App\PsikologPiket;
+use Response;
 
 class PsikologController extends Controller {
 
@@ -83,11 +85,22 @@ class PsikologController extends Controller {
 
         return redirect('/admin/psikolog');
 	}
+	
+	public function cekPiket(Request $request)
+	{
+		$id = $request->id;
+		$psPkt = PsikologPiket::find($id);
+		$add = "<table>";
+		$b = 1;
+		$hari = array("Senin","Selasa","Rabu","Kamis","Jumat");
+		foreach ($hari as $key) { 
+			$add .= '<tr><td><input type="checkbox" id='.$key.' name='.$b.'>';
+			$add .= '<label for='.$key.'>'.$key.'</label></td>';
+			$add .= '<td><input type="radio" id="pagi'.$b.'" name="shift'.$b.'"><label for="pagi'.$b.'">Pagi</label>';
+			$add .= '<td><input type="radio" id="siang'.$b.'" name="shift'.$b.'"><label for="siang'.$b.'">Siang</label></tr>';
+			$b++;
+		}
+		$add .= '</table>';
+		return Response::json(['add'=>$add]);
 	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+}

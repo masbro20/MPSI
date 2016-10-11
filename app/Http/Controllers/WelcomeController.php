@@ -35,7 +35,7 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		$art = Artikel::take(5)->orderBy('updated_at','asc')->get();
+		$art = Artikel::take(5)->orderBy('updated_at','desc')->get();
 		return view('welcome',compact('art'));
 	}
 }

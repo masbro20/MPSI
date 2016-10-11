@@ -15,8 +15,8 @@
 					<h5 class="task-card-title">Berita</h5>
 					<p class="task-card-date">Update Terbaru</p>
 				</li>
-				<li>
-					<table class="stripped licent">
+				<li class="licent">
+					<table class="">
 						@forelse($art as $arts)
 						 <tr >
 						 	<td class="nopadd"><strong><a href="{{url('/artikel/'.$arts->id)}}">{{$arts->judul}}</a></strong>
@@ -34,6 +34,7 @@
 						</tr>
 						@endforelse
 					</table>
+					<a href="#" class="right" style="padding-top: 0px !important;padding-bottom: 10px;">More..</a>
 				</li>
 			</ul>
 		</div>

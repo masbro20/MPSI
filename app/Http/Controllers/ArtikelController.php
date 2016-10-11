@@ -52,10 +52,7 @@ class ArtikelController extends Controller {
 	public function show($id)
 	{
 		$art = Artikel::find($id);
-		$bd = '<!DOCTYPE html><html><body>';
-		$bd .= $art->body;
-		$bd .= '</body></html>';
-		return view('admin.artikel.show',compact('art','bd'));
+		return view('admin.artikel.show',compact('art'));
 	}
 
 	public function getArtikel($id)
@@ -65,6 +62,12 @@ class ArtikelController extends Controller {
 		$bd .= $art->body;
 		$bd .= '</body></html>';
 		return $bd;
+	}
+
+	public function openArtikel($id)
+	{
+		$art = Artikel::find($id);
+		return view('artikel',compact('art'));
 	}
 
 	/**

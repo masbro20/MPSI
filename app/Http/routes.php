@@ -19,6 +19,7 @@ Route::get('/jobseeker', 'HomeController@index');
 //route umum
 Route::get('home', 'HomeController@index');
 Route::get('/getartikel/{id}', 'ArtikelController@getArtikel');
+Route::get('/artikel/{id}', 'ArtikelController@openArtikel');
 
 //route admin
 Route::group(['prefix'=>'/admin','middleware' =>'admin'],function(){

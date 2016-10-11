@@ -3,6 +3,7 @@
 use App\User;
 use Response;
 use Illuminate\Http\Request;
+use App\Artikel;
 
 class WelcomeController extends Controller {
 
@@ -34,6 +35,7 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+		$art = Artikel::take(5)->orderBy('updated_at','asc')->get();
+		return view('welcome',compact('art'));
 	}
 }

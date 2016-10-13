@@ -10,6 +10,7 @@ function openPiket(ob){
     jq('.pikets').html("Loading..");
     var token = jq('.csrf').val();
     var id = ob.attr('id');
+    jq('.ids').val(id);
     var data = {'id':id};
     var url = '{{url('admin/cekpiket')}}';
     jq.ajaxSetup({
@@ -30,9 +31,10 @@ function openPiket(ob){
 
 function savePiket() {
     var token = jq('.csrf').val();
-    var vals = ob.attr('id');
-    var data = {'vals':vals};
-    var url = '{{url('admin/cekpiket')}}';
+    var vals = saveTable();
+    var id = jq('.ids').val();
+    var data = {'vals':vals,'id':id};
+    var url = '{{url('admin/savepiket')}}';
     jq.ajaxSetup({
         headers: {'X-CSRF-TOKEN': token},
     });
@@ -43,10 +45,24 @@ function savePiket() {
         datatype : 'JSON',
         //beforeSend: function(xhr){xhr.setRequestHeader('X-CSRF-TOKEN', token)},
         success : function(data){
-            jq('.pikets').html(data.add);
-            var anu = jq(data.add);
+            //console.log(data.add);
+            Materialize.toast(data.add, 4000);
         }
     });
+}
+
+function saveTable(){
+    var jsn_obj = {};
+    jsn_obj["hari"] = [];
+    jsn_obj["shift"] = [];
+    jq('.hari').each(function(){
+        if(jq(this).find('.nh').is(':checked')){
+            jsn_obj.hari.push(jq(this).find('.nh').attr('name'));
+            jsn_obj.shift.push(jq(this).find('input:radio:checked').attr('class'));
+        }
+    });
+    var data = JSON.stringify(jsn_obj);
+    return data;
 }
 </script>
 <?php $no=1; ?>
@@ -96,10 +112,11 @@ function savePiket() {
         <div class="row" style="margin-left: 10px;margin-right: 10px;">
         {!! Form::open(['url' => '/admin/psikolog',  'class' => 'pikets']) !!}
         {!! Form::close() !!}
+        <input type="hidden" class="ids">
         </div>
     </div>
     <div class="modal-footer">
-        <button href="#" class="waves-effect waves-red btn-flat modal-action" type="submit" onclick="savePiket();">Save</button>
+        <button href="#" class="waves-effect waves-red btn-flat modal-close modal-action" type="submit" onclick="savePiket();">Save</button>
     </div>
 </div>
 <div id="add-modal" class="modal">

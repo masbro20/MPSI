@@ -89,18 +89,63 @@ class PsikologController extends Controller {
 	public function cekPiket(Request $request)
 	{
 		$id = $request->id;
-		$psPkt = PsikologPiket::find($id);
+		$shift = PsikologPiket::where('psikolog_id',$id)->lists('shift');
+		$hrs = PsikologPiket::where('psikolog_id',$id)->lists('hari');
 		$add = "<table>";
 		$b = 1;
 		$hari = array("Senin","Selasa","Rabu","Kamis","Jumat");
 		foreach ($hari as $key) { 
-			$add .= '<tr><td><input type="checkbox" id='.$key.' name='.$b.'>';
-			$add .= '<label for='.$key.'>'.$key.'</label></td>';
-			$add .= '<td><input type="radio" id="pagi'.$b.'" name="shift'.$b.'"><label for="pagi'.$b.'">Pagi</label>';
-			$add .= '<td><input type="radio" id="siang'.$b.'" name="shift'.$b.'"><label for="siang'.$b.'">Siang</label></tr>';
+			$n=8;
+			$add .= '<tr class="hari"><td><input type="checkbox" id='.$key.' name='.$b.' class="nh"';
+			if (array_search($b, $hrs)!==false) {
+				$add .= 'checked';
+				$n=array_search($b, $hrs);
+			}
+			$add .= '><label for='.$key.'>'.$key.'</label></td>';
+			$add .= '<td><input type="radio" id="pagi'.$b.'" name="shift'.$b.'" class="1"';
+			if ($n<7 && $shift[$n] == 1) {
+				$add .= 'checked';
+			}
+			$add .= '><label for="pagi'.$b.'">Pagi</label>';
+			$add .= '<td><input type="radio" id="siang'.$b.'" name="shift'.$b.'" class="2"';
+			if ($n<7 && $shift[$n] == 2) {
+				$add .= 'checked';
+			}
+			$add .= '><label for="siang'.$b.'">Siang</label></tr>';
 			$b++;
 		}
 		$add .= '</table>';
 		return Response::json(['add'=>$add]);
+	}
+
+	public function savePiket(Request $request)
+	{
+		$js = json_decode($request->vals);
+		$id = $request->id;
+		$psPkt = PsikologPiket::where('psikolog_id',$id)->get();
+		$n = count($psPkt);
+		$j=0;
+		$b=0;
+		if ($n>0) {
+			$a = PsikologPiket::where('psikolog_id',$id)->delete();
+		}
+		$i=0;
+		while ($i < count($js->hari)) {
+			$pkt = new PsikologPiket();
+			$pkt->hari = $js->hari[$i];
+			$pkt->shift = $js->shift[$i];
+			$pkt->psikolog_id = $id;
+			$a = $pkt->save();
+			if ($a===true) {
+				$j++;
+			}
+			$i++;
+		}
+		if ($j==$n) {
+			$res = "Data Berhasil Disimpan AB!";
+		} else{
+			$res = "Data belum berhasil disimpan nih";
+		}
+		return Response::json(['add'=>$res]);
 	}
 }

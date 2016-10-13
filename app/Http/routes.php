@@ -20,6 +20,7 @@ Route::get('/jobseeker', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 Route::get('/getartikel/{id}', 'ArtikelController@getArtikel');
 Route::get('/artikel/{id}', 'ArtikelController@openArtikel');
+Route::get('/artikel','ArtikelController@listArtikel');
 
 //route admin
 Route::group(['prefix'=>'/admin','middleware' =>'admin'],function(){
@@ -29,6 +30,7 @@ Route::group(['prefix'=>'/admin','middleware' =>'admin'],function(){
 	Route::resource('/seminar', 'SeminarController');
 	Route::resource('/psikolog', 'PsikologController');
 	Route::post('/cekpiket', 'PsikologController@cekPiket');
+	Route::post('/savepiket', 'PsikologController@savePiket');
 });
 
 //route employer
